@@ -4,17 +4,22 @@ namespace App\Livewire\Member;
 
 use App\Models\Member;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
-    public $members;
+    use WithPagination;
 
-    public function mount()
-    {
-        $this->members = Member::all();
-    }
+    protected $queryString = ['search' => ['except' => '']];
+
+    public $search = '';
+
     public function render()
     {
-        return view('livewire.member.index');
+        return view('livewire.member.index', [
+            'members' => Member::where('name', 'LIKE', "%{$this->search}%")
+                ->orWhere('ci', 'LIKE', '%' . $this->search . '%')
+                ->paginate(),
+        ]);
     }
 }
