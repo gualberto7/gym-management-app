@@ -15,4 +15,14 @@ class Gym extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function memberships()
+    {
+        return $this->hasMany(Membership::class);
+    }
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
 }
