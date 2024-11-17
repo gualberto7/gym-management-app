@@ -10,14 +10,15 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('gyms', function (Blueprint $table) {
+        Schema::create('memberships', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('address');
-            $table->string('phone');
-            $table->string('email')->unique()->nullable();
-            $table->string('website')->nullable();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('price');
+            $table->string('duration');
+            $table->enum('duration_unit', ['day', 'week', 'month', 'year']);
+            $table->integer('max_checkins')->nullable();
+            $table->string('description')->nullable();
+            $table->foreignId('gym_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('gyms');
+        Schema::dropIfExists('memberships');
     }
 };

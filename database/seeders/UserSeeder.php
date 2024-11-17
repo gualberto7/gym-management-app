@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Gym;
+use App\Models\Membership;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -30,6 +31,24 @@ class UserSeeder extends Seeder
             'email' => 'gym1@test,com',
             'website' => 'http://gym1.test.com',
             'user_id' => $user1->id,
+        ]);
+
+        Membership::factory()->create([
+            'name' => 'Mensual',
+            'price' => 200,
+            'duration' => 1,
+            'duration_unit' => 'month',
+            'description' => 'Membresia mensual',
+            'gym_id' => $gym->id,
+        ]);
+
+        Membership::factory()->create([
+            'name' => 'Trimestral',
+            'price' => 520,
+            'duration' => 3,
+            'duration_unit' => 'month',
+            'description' => 'Membresia trimestral',
+            'gym_id' => $gym->id,
         ]);
     }
 }
