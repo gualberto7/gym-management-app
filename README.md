@@ -23,9 +23,11 @@ allows gym members to book classes and view their bookings.
 flowchart TD
    A[User] -->|creates| B(Gym)
    B --> |has| C(Membership)
-   B --> |has| D(Trainer)
-   B --> |has| E(Class)
+   B --> |has| D(Trainers)
+   B --> |has| E(Classes)
    B --> |has| F(Subscriptions)
+   G(Members) --> |book| E
+   G --> |subscribe| F
    F --> |Belongs| C
 ```
 
