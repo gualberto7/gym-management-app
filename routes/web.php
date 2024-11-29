@@ -14,7 +14,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/registro', function () {
-        return view('register');
-    })->name('register');
+    Route::controller(\App\Http\Controllers\MemberController::class)->group(function () {
+        Route::get('/registro', 'create')->name('member.create');
+    });
 });
