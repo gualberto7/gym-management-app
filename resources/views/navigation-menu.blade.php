@@ -15,7 +15,7 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('member.create') }}" :active="request()->routeIs('register')">
+                    <x-nav-link href="{{ route('members.create') }}" :active="request()->routeIs('register')">
                         Registro
                     </x-nav-link>
                 </div>
